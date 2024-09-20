@@ -59,19 +59,26 @@ const MovieList = () => {
   return (
     <div className="container mx-auto p-4">
       <div className="mb-4">
-        <input
-          type="text"
-          className=" hover:shadow-lg p-2 w-full rounded outline-none"
-          placeholder="Search for movies..."
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-        />
+       
+        <label className="input input-bordered flex items-center gap-2">
+  <input type="text" className="grow" placeholder="Search"  onChange={(e) => setSearchTerm(e.target.value)}/>
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 16 16"
+    fill="currentColor"
+    className="h-4 w-4 opacity-70">
+    <path
+      fillRule="evenodd"
+      d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z"
+      clipRule="evenodd" />
+  </svg>
+</label>
       </div>
 
       <div className="grid grid-cols-3 gap-4  mt-8">
         {displayedMovies.length > 0 ? (
           displayedMovies.map((movie) => (
-            <div key={movie.id} className=" p-2 rounded hover:border transition-all shadow-lg flex gap-8">
+            <div key={movie.id} className=" p-2 rounded hover:border h-fit transition-all shadow-lg flex gap-8">
               <img
                 src="ShawshankRedemptionMoviePoster.jpg"
                 alt={movie.movie}
@@ -79,7 +86,7 @@ const MovieList = () => {
               />
               <div>
               <h2 className="font-bold text-xl">{movie.movie}</h2>
-              <p className="text-sm mb-2">Rating: {movie.rating}</p>
+              <p className="text-sm mb-2 ">Rating: {movie.rating}</p>
               <a
                 href={movie.imdb_url}
                 target="_blank"
