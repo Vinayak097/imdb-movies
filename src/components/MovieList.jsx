@@ -3,20 +3,20 @@ import axios from 'axios';
 
 const MovieList = () => {
   const [movies, setMovies] = useState([]);
-  const [displayedMovies, setDisplayedMovies] = useState([]); // Movies currently displayed
+  const [displayedMovies, setDisplayedMovies] = useState([]); 
   const [filteredMovies, setFilteredMovies] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [searchTerm, setSearchTerm] = useState('');
-  const [displayCount, setDisplayCount] = useState(9); // How many movies to display initially
+  const [displayCount, setDisplayCount] = useState(9);
 
-  // Fetch all movies at once
+  
   const fetchMovies = async () => {
     setLoading(true);
     try {
       const response = await axios.get(`https://dummyapi.online/api/movies`);
-      setMovies(response.data); // Store all movies
-      setDisplayedMovies(response.data.slice(0, displayCount)); // Initially display a portion
+      setMovies(response.data);
+      setDisplayedMovies(response.data.slice(0, displayCount));
     } catch (err) {
       setError('Failed to load movies');
     }
@@ -27,7 +27,7 @@ const MovieList = () => {
     fetchMovies();
   }, []);
 
-  // Update displayed movies on search or load more
+
   useEffect(() => {
     const filtered = movies.filter((movie) =>
       movie.movie.toLowerCase().includes(searchTerm.toLowerCase())
@@ -36,10 +36,10 @@ const MovieList = () => {
     setDisplayedMovies(filtered.slice(0, displayCount));
   }, [movies, searchTerm, displayCount]);
 
-  // Handle infinite scroll (load more movies as user scrolls down)
+  
   const handleScroll = useCallback(() => {
     if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 200 && !loading) {
-      setDisplayCount((prevCount) => prevCount + 9); // Load more movies (in chunks of 9)
+      setDisplayCount((prevCount) => prevCount + 9); 
     }
   }, [loading]);
 
