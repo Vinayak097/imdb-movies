@@ -49,7 +49,9 @@ const MovieList = () => {
   }, [handleScroll]);
 
   if (loading && movies.length === 0) {
-    return <p>Loading...</p>;
+    return <div className='flex h-screen items-center justify-center'>
+      <span className="loading loading-dots loading-lg"></span>
+    </div>;
   }
 
   if (error) {
