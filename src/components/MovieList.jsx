@@ -80,7 +80,7 @@ const MovieList = () => {
       <div className="grid grid-cols-3 gap-4  mt-8">
         {displayedMovies.length > 0 ? (
           displayedMovies.map((movie) => (
-            <div key={movie.id} className=" p-2 rounded hover:border h-fit transition-all shadow-lg flex gap-8">
+            <div key={movie.id} className=" p-2 rounded hover:border border-amber-500 h-fit transition-all shadow-lg flex gap-8">
               <img
                 src="ShawshankRedemptionMoviePoster.jpg"
                 alt={movie.movie}
